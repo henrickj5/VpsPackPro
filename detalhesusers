@@ -1,5 +1,6 @@
 #!/bin/bash
 clear
+
 echo -e "\033[1;30m----------------------------------------------------------------------\033[0m"
 echo -e "\033[1;37m Usuario               Senha               Data E.          Logins S. \033[0m"
 echo -e "\033[1;30m----------------------------------------------------------------------\033[0m"
@@ -20,18 +21,10 @@ else
 senha="null"
 fi
 
-datform=$(chage -l $users |grep -i co |awk -F : '{print $2}' |awk '{print $1" " $2" "$3}')
-
-if [ $datform == nunca ] 2> /dev/null
+data=$(chage -l $users |grep -i co |awk -F : '{print $2}')
+if [ $data = never ] 2> /dev/null
 then
-data="Nunca"
-else
- if [ $datform == never ] 2> /dev/null
- then
- data="Nunca"
- else
- data=$(printf '%-18s' "$(date -d "$datform" '+%d/%m/%Y')")
- fi
+date="Nunca"
 fi
 detalhesdata=$(printf '%-18s' "$data")
 detalheslimit=$(printf '%-10s' "$limitecs")
