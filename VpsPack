@@ -101,5 +101,5 @@ case $opcao in
  17)
   desinstalar;;
  *)
-  id > /dev/null 2> /dev/nulll
+  id > /dev/null 2> /dev/null
 esac
